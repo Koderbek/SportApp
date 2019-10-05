@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Class GameBuffer
  * @package App\Entity
  *
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="App\Repository\GameBufferRepository")
  */
 class GameBuffer extends AbstractGame
 {

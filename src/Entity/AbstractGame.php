@@ -9,45 +9,55 @@
 namespace App\Entity;
 
 
+use Symfony\Component\Serializer\Annotation\Groups;
+
 abstract class AbstractGame
 {
     /**
      * @var integer
+     * @Groups("show")
      */
     protected $id;
 
     /**
      * @var string
+     * @Groups("show")
      */
     protected $language;
 
     /**
      * @var string
+     * @Groups("show")
      */
     protected $kind;
 
     /**
      * @var string
+     * @Groups("show")
      */
     protected $league;
 
     /**
      * @var string
+     * @Groups("show")
      */
     protected $teamFirst;
 
     /**
      * @var string
+     * @Groups("show")
      */
     protected $teamSecond;
 
     /**
      * @var \DateTime
+     * @Groups("show")
      */
     protected $time;
 
     /**
      * @var string
+     * @Groups("show")
      */
     protected $source;
 
