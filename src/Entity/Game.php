@@ -9,6 +9,7 @@
 namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Class Game
@@ -116,6 +117,14 @@ class Game extends AbstractGame
         if ($this->bufferGames->contains($gameBuffer)) {
             $this->bufferGames->removeElement($gameBuffer);
         }
+    }
+
+    /**
+     * @Groups("show")
+     */
+    public function getCountBufferGames()
+    {
+        return $this->getBufferGames()->count();
     }
 
     public function addMerge(GameBuffer $gameBuffer)
