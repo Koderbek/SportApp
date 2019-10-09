@@ -34,15 +34,10 @@ class GameBufferController extends AbstractApiController
         if ($content) {
             /** @var GameBuffer $entity */
             $entity = $serializer->deserialize($content, GameBuffer::class, 'json');
-            $unique = $em->getRepository(GameBuffer::class)->checkUnique($entity);
-            if ($unique) {
-                $em->persist($entity);
-                $em->flush();
-                $json = $serializer->serialize($entity,"json", ['groups' => ["show"]]);
-                return $this->createResponse($json);
-            } else {
-                throw new HttpException(406, "Not unique value");
-            }
+            $em->persist($entity);
+            $em->flush();
+            $json = $serializer->serialize($entity,"json", ['groups' => ["show"]]);
+            return $this->createResponse($json);
         } else {
             throw new HttpException(400, "Bad Request");
         }

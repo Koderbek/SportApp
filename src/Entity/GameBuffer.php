@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Class GameBuffer
  * @package App\Entity
  *
- * @ORM\Entity(repositoryClass="App\Repository\GameBufferRepository")
+ * @ORM\Entity()
  */
 class GameBuffer extends AbstractGame
 {
@@ -66,4 +66,26 @@ class GameBuffer extends AbstractGame
      * @ORM\Column(type="string")
      */
     protected $source;
+
+    /**
+     * @var Game|null
+     * @ORM\ManyToOne(targetEntity="Game", inversedBy="bufferGames")
+     */
+    protected $mergeGame;
+
+    /**
+     * @return Game|null
+     */
+    public function getMergeGame()
+    {
+        return $this->mergeGame;
+    }
+
+    /**
+     * @param Game|null $mergeGame
+     */
+    public function setMergeGame(?Game $mergeGame)
+    {
+        $this->mergeGame = $mergeGame;
+    }
 }

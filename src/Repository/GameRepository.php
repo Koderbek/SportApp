@@ -12,7 +12,7 @@ namespace App\Repository;
 use App\Entity\GameBuffer;
 use Doctrine\ORM\EntityRepository;
 
-class GameBufferRepository extends EntityRepository
+class GameRepository extends EntityRepository
 {
     public function checkUnique(GameBuffer $game)
     {
@@ -29,7 +29,6 @@ class GameBufferRepository extends EntityRepository
         $qb->andWhere($qb->expr()->lte("gameBuffer.time", "'".$secondTime."'"));
 
         $result = $qb->getQuery()->getResult();
-        var_dump($result);
-        return count($result)>0 ? false : true;
+        return count($result)>0 ? $result[0] : true;
     }
 }
